@@ -1,4 +1,6 @@
 export enum UserRoles {
-  ADMIN = 'Administrador',
-  CUSTOMER_OR_PATIENT = 'Lector',
+  ADMIN = 'ADMIN',
+  READ_ONLY = 'READ_ONLY',
+  MEDICAL_STAFF = 'MEDICAL_STAFF',
+  PATIENT = 'PATIENT',
 }

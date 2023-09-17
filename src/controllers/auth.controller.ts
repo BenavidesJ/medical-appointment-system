@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
-// import jwt from 'jsonwebtoken';
 import { pool } from '../services/db';
 import { User } from '../types';
 import { generateJWT } from '../helpers/gen-jwt';
@@ -24,9 +23,8 @@ export const userRegister = async (req: Request, res: Response) => {
         .json({ message: "The data provided doesn't exist" });
     }
   } catch (error) {
-    return res
-      .status(500)
-      .json({ message: 'An error ocurred', payload: error });
+    console.log(error);
+    return res.status(500).json({ message: 'An error ocurred' });
   }
 };
 
@@ -54,10 +52,7 @@ export const userLogin = async (req: Request, res: Response) => {
         .json({ message: "The data provided doesn't exist" });
     }
   } catch (error) {
-    return res
-      .status(500)
-      .json({ message: 'An error ocurred', payload: error });
+    console.log(error);
+    return res.status(500).json({ message: 'An error ocurred' });
   }
 };
-
-export const verifyUserSignage = (_req: Request, _res: Response) => {};

@@ -37,10 +37,7 @@ export const getUserById = async (req: Request, res: Response) => {
 export const deleteUser = async (req: any, res: Response) => {
   try {
     const { id } = req.params;
-    const { user } = req;
-    const authenticatedUser = user;
 
-    console.log(authenticatedUser);
     const [result] = await pool.query<User[]>(
       `SELECT * FROM user AS u WHERE u.id = ${id};`
     );
@@ -59,3 +56,5 @@ export const deleteUser = async (req: any, res: Response) => {
     res.status(401).json({ message: 'An error ocurred contact administrator' });
   }
 };
+
+// Cambiar un rol
