@@ -1,19 +1,5 @@
 import { RowDataPacket } from 'mysql2';
 
-// export enum Weather {
-//   Sunny = 'sunny',
-//   Rainy = 'rainy',
-//   Cloudy = 'cloudy',
-//   Windy = 'windy',
-//   Stormy = 'stormy',
-// }
-// export enum Visibility {
-//   Great = 'great',
-//   Good = 'good',
-//   Ok = 'ok',
-//   Poor = 'poor',
-// }
-
 // export interface DiaryEntry {
 //   id: number;
 //   date: string;
@@ -32,4 +18,12 @@ export interface User extends RowDataPacket {
   password: string;
   fecha: string;
   rol: number | string;
+}
+
+export interface Appointment extends RowDataPacket {
+  id: number;
+  date: string;
+  time: string;
+  address: string | number;
+  patient_uid: string;
 }
