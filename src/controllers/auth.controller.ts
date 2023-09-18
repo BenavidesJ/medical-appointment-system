@@ -19,8 +19,8 @@ export const userRegister = async (req: Request, res: Response) => {
       });
     } else {
       return res
-        .status(400)
-        .json({ message: "The data provided doesn't exist" });
+        .status(401)
+        .json({ message: 'The data provided is not correct' });
     }
   } catch (error) {
     console.log(error);
@@ -37,7 +37,7 @@ export const userLogin = async (req: Request, res: Response) => {
     if (result.length > 0) {
       const validPassword = bcrypt.compareSync(password, userPass);
       if (!validPassword) {
-        return res.status(400).json({ message: 'Invalid credential' });
+        return res.status(401).json({ message: 'Invalid credential' });
       }
 
       const token = await generateJWT(uid);
@@ -48,7 +48,7 @@ export const userLogin = async (req: Request, res: Response) => {
       });
     } else {
       return res
-        .status(400)
+        .status(401)
         .json({ message: "The data provided doesn't exist" });
     }
   } catch (error) {

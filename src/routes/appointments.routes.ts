@@ -1,6 +1,10 @@
 import { Router } from 'express';
-import { getAppointmentByUserID } from '../controllers/appointment.controller';
+import {
+  createAppointment,
+  getAppointmentByUserID,
+} from '../controllers/appointment.controller';
 import { isUIDValid } from '../middlewares/uid-validation';
+import { isUIDRegistered } from '../middlewares/regist-validation';
 
 const router = Router();
 
@@ -8,7 +12,7 @@ const router = Router();
 router.get('/appointment/:uid', isUIDValid, getAppointmentByUserID);
 
 // crear cita
-router.post('/appointment');
+router.post('/appointment', isUIDRegistered, createAppointment);
 
 // eliminar cita
 router.delete('/appointment/:id');
